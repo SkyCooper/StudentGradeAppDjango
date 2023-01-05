@@ -23,9 +23,12 @@ class Students(models.Model):
       return self.first_name
     
 class Grade(models.Model):
-  student = models.ManyToManyField(Students, db_table="TABLO")
-  lesson = models.ForeignKey(Lessons,  on_delete=models.CASCADE)
+  student = models.ForeignKey(Students,  on_delete=models.CASCADE, related_name="student_grades")
+  lesson = models.ForeignKey(Lessons,  on_delete=models.CASCADE, related_name="lesson_grades")
   grade = models.IntegerField()
   
+  class Meta:
+    unique_together = ('student', 'lesson')
+  
   def __str__(self):
-      return self.grade
+      return str(self.grade)
