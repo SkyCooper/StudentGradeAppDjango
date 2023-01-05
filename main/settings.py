@@ -42,8 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     #? my apps
-    
-    
+    'grades',
     
     #? trirdpart apps
     'rest_framework',
